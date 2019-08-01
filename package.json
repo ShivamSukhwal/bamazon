@@ -1,0 +1,19 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "a database called bamazon that displays products through mySQL database",
+  "main": "Bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShivamSukhwal/bamazon.git"
+  },
+  "author": "Shivam Sukhwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShivamSukhwal/bamazon/issues"
+  },
+  "homepage": "https://github.com/ShivamSukhwal/bamazon#readme"
+}
