@@ -55,14 +55,60 @@ var shop = function() {
         if (err) throw err;
         if (res.length === 0) {
           console.log(
-            "That Product doesn't exist, Please enter a Product Id from the list above"
+            "Unfortunetly you have selected an unrecognizable ID, Please select an Id from the list above"
           );
 
           shop();
         } else {
-          console.log("Thanks for the selection");
+          inquirer
+            .prompt({
+              type: "input",
+              name: "quantity",
+              message: "How many of those you like to buy?"
+            })
+            .then(function(amount) {
+              var quantity = amount.quantity;
+              if (quantity > res[0].quantity_available) {
+                console.log(
+                  "Sorry we only have " +
+                    res[0].quantity_available +
+                    " items in stock"
+                );
+                shopping();
+              } else {
+                console.log("");
+                console.log("you have selected " + res[0].product_name);
+                console.log(
+                  "the amount you have selected " +
+                    quantity +
+                    " at a price of " +
+                    res[0].Price +
+                    " a peice"
+                );
+                console.log(
+                  "for a grand total of $" +
+                    (quantity * res[0].Price).toFixed(2)
+                );
+                var newQuantity = res[0].quantity_available - quantity;
+                connection.query(
+                  "UPDATE products SET quantity_available = " +
+                    newQuantity +
+                    " WHERE id = " +
+                    res[0].id,
+                  function(err, resUpdate) {
+                    if (err) throw err;
+                    console.log("");
+                    console.log("Your Order has been Processed");
+                    console.log("Thank you for Shopping with us...!");
+                    console.log("");
+                    connection.end();
+                  }
+                );
+              }
+            });
         }
       });
     });
 };
+
 display();

@@ -11,7 +11,7 @@ CREATE TABLE products
     (40) NOT NULL,
     department_id INT
     (50) NOT NULL,
-    prices DECIMAL
+    Price DECIMAL
     (10,2) NOT NULL,
     quantity_available INT
     (10) NOT NULL,
