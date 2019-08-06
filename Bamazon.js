@@ -74,7 +74,7 @@ var shop = function() {
                     res[0].quantity_available +
                     " items in stock"
                 );
-                shopping();
+                shop();
               } else {
                 console.log("");
                 console.log("you have selected " + res[0].product_name);
